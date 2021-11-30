@@ -73,6 +73,8 @@ pip3.9 install -r requirements.txt
 
 ### Usage
 
+See help files for more details:
+
 ```bash
 python main.py --help
 ```
