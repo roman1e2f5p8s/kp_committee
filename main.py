@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 from src.parser import parser
+import src.data_gen as dg
 import src.graph_utils as gu
 import src.opt_utils as opt
 
@@ -15,8 +16,10 @@ def main():
     ALPHA = 1.0 / 3 if args.mode == 'stop' else 2.0 / 3
     NODE_SIZE = 2000
 
-    COSTS = np.random.uniform(low=0, high=1, size=N_SEATS)
-    WEIGHTS = np.random.randint(low=1, high=args.max_weight + 1, size=N_SEATS)
+    # COSTS = np.random.uniform(low=0, high=1, size=N_SEATS)
+    # WEIGHTS = np.random.randint(low=1, high=args.max_weight + 1, size=N_SEATS)
+    COSTS = dg.get_costs(n_nodes=args.n_nodes, zipf_coeffs=1)[:N_SEATS]
+    WEIGHTS = dg.get_voting_power(n_nodes=args.n_nodes)[:N_SEATS]
     
     H, W, nodes_pos = gu.layout(n_seats=N_SEATS, node_size=NODE_SIZE)
     

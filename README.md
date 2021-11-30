@@ -21,8 +21,8 @@ and the cost of this is
 \end{equation}
 
 We are interested in two scenarios:
-1. In order to **stop** the committee, the adversary needs to obtain at least 1/3 of the total voting power.
-2. In order to **overtake** the committee, the adversary needs to obtain at least 2/3 of the total voting power.
+1. In order to **stop** the committee, the adversary needs to obtain 1/3 or more of the total voting power.
+2. In order to **overtake** the committee, the adversary needs to obtain more than 2/3 of the total voting power.
 
 Define $\alpha \in \{1/3, 2/3\}$.
 We now formulate the following optimization problem
@@ -69,6 +69,33 @@ venv\Scripts\activate.bat
 **Install the dependencies:**
 ```bash
 pip3.9 install -r requirements.txt
+```
+
+### Usage
+
+```bash
+python main.py --help
+```
+
+```
+usage: main.py --n_nodes {4,5,...} --n_seats {4,5,...} --mode {stop,overtake} [-h]
+               [--seed {1,2,...}] [--max_weight {1,2,...,20}] [--solver SOLVER] [--latex]
+               [--hide_plots]
+
+Solves Knapsack problem for committee selection
+
+required arguments:
+  --n_nodes {4,5,...}        number of nodes in the network
+  --n_seats {4,5,...}        number of seats in the committee
+  --mode {stop,overtake}     mode to simulate: either stop or overtake the committee
+
+optional arguments:
+  -h, --help                 show this help message and exit
+  --seed {1,2,...}           seed for random generator, defaults to 2021
+  --max_weight {1,2,...,20}  maximum value of voting power, defaults to 20
+  --solver SOLVER            solver name, defaults to glpk
+  --latex                    use LaTeX in plots, defaults to False
+  --hide_plots               do not show plots, defaults to False
 ```
 
 

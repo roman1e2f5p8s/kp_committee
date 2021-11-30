@@ -47,12 +47,20 @@ def parser():
     # required arguments
     required_args = parser_.add_argument_group('required arguments')
     required_args.add_argument(
+            '--n_nodes',
+            action=NumSeatsAction,
+            type=int,
+            required=True,
+            metavar='{4,5,...}',
+            help='number of nodes in the network',
+            )
+    required_args.add_argument(
             '--n_seats',
             action=NumSeatsAction,
             type=int,
             required=True,
             metavar='{4,5,...}',
-            help='number of seats',
+            help='number of seats in the committee',
             )
     required_args.add_argument(
             '--mode',
