@@ -71,13 +71,6 @@ venv\Scripts\activate.bat
 pip3.9 install -r requirements.txt
 ```
 
-[//]: # (
-Then run
-```bash
-python3.9 setup.py install
-```
-)
-
 
 ```python
 
