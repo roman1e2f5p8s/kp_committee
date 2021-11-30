@@ -1,62 +1,76 @@
 import numpy as np
 import pandas as pd
-import pyomo.environ as pe
 
-np.random.seed(2021)
-
-N_SEATS = 1000
-ALPHA = 1.0 / 3
-COSTS = np.random.uniform(low=0, high=1, size=N_SEATS)
-WEIGHTS = np.random.randint(low=1, high=20, size=N_SEATS)
+from src.parser import parser
+import src.graph_utils as gu
+import src.opt_utils as opt
 
 
-def c1_rule(model):
-    return sum([model.w[i] * model.x[i] for i in model.i]) >= \
-            model.alpha * sum([model.w[i] for i in model.i])
+def main():
+    args = parser().parse_args()
+
+    np.random.seed(seed=args.seed)
+
+    N_SEATS = args.n_seats
+    ALPHA = 1.0 / 3 if args.mode == 'stop' else 2.0 / 3
+    NODE_SIZE = 2000
+
+    COSTS = np.random.uniform(low=0, high=1, size=N_SEATS)
+    WEIGHTS = np.random.randint(low=1, high=args.max_weight + 1, size=N_SEATS)
+    
+    H, W, nodes_pos = gu.layout(n_seats=N_SEATS, node_size=NODE_SIZE)
+    
+    gu.plot(
+            n_seats=N_SEATS,
+            mode=args.mode,
+            costs=COSTS,
+            weights=WEIGHTS,
+            nodes_pos=nodes_pos,
+            node_size=NODE_SIZE,
+            fig_w=W,
+            fig_h=H,
+            solved=False,
+            latex=args.latex,
+            show=not args.hide_plots,
+            )
+    
+    model = opt.get_model(n_seats=N_SEATS, alpha=ALPHA, costs=COSTS, weights=WEIGHTS)
+
+    instance, min_voting_power, adversary_voting_power, adversary_cost, selected_seats, colors =\
+            opt.solve(model=model, solver_name=args.solver)
+
+    gu.plot(
+            n_seats=N_SEATS,
+            mode=args.mode,
+            costs=COSTS,
+            weights=WEIGHTS,
+            nodes_pos=nodes_pos,
+            node_size=NODE_SIZE,
+            fig_w=W,
+            fig_h=H,
+            solved=True,
+            min_voting_power=min_voting_power,
+            adversary_voting_power=adversary_voting_power,
+            adversary_cost=adversary_cost,
+            colors=colors,
+            latex=args.latex,
+            show=not args.hide_plots,
+            )
+    
+    df = pd.DataFrame()
+    df['seat'] = pd.Series(range(1, N_SEATS + 1))
+    df['cost'] = pd.Series(COSTS)
+    df['weight'] = pd.Series(WEIGHTS)
+    df['selected'] = pd.Series(instance.x.get_values().values()).astype(bool)
+    print(df)
+    print()
+
+    print('To {} the committee with the total voting power of {},'.format(args.mode, WEIGHTS.sum()))
+    print('an adversary needs to obtain at least voting power of {:.2f}.'.format(min_voting_power))
+    print('The minimum cost of doing this is {:.2f}.'.format(adversary_cost))
+    print('Seats to be selected:', selected_seats)
+    print('Obtained voting power: {}'.format(adversary_voting_power))
 
 
-def obj_rule(model):
-    return sum([model.c[i] * model.x[i] for i in model.i])
-
-
-model = pe.AbstractModel()
-model.N = pe.Param(initialize=N_SEATS)
-model.alpha = pe.Param(initialize=ALPHA)
-
-model.i = pe.RangeSet(model.N)
-model.c = pe.Param(model.i, initialize=dict(zip(range(1, N_SEATS + 1), COSTS)))
-model.w = pe.Param(model.i, initialize=dict(zip(range(1, N_SEATS + 1), WEIGHTS)))
-model.x = pe.Var(model.i, domain=pe.Binary)
-
-
-model.c1 = pe.Constraint(rule=c1_rule)
-model.obj = pe.Objective(rule=obj_rule, sense=pe.minimize)
-
-solver = pe.SolverFactory('glpk')
-# solver.options['max_iter'] = 10000
-instance = model.create_instance()
-results = solver.solve(instance)
-
-if results.solver.status == pe.SolverStatus.ok and \
-        results.solver.termination_condition == pe.TerminationCondition.optimal:
-    print('\nSolution is optimal and feasible')
-elif results.solver.termination_condition == pe.TerminationCondition.infeasible:
-    print('\nThe model is infeasible')
-else:
-    print('\nSomething else is wrong: solver status:', results.solver.status)
-
-instance.display()
-print(results)
-instance.x.pprint()
-instance.obj.pprint()
-print()
-
-df = pd.DataFrame()
-df['seat'] = pd.Series(range(1, N_SEATS + 1))
-df['cost'] = pd.Series(COSTS)
-df['weight'] = pd.Series(WEIGHTS)
-df['x'] = pd.Series(instance.x.get_values().values())
-print(df)
-
-print()
-print('OF =', pe.value(instance.obj))
+if __name__ == '__main__':
+    main()
