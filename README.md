@@ -42,26 +42,41 @@ The coding language of this project is ```Python 3.9```. [Pyomo](http://www.pyom
 Please follow these instructions to install all the requirements and use the package correctly.
 
 ### Requirements and Installation
-Download the code:
+**Make sure you have installed:**
+1. [Python 3.9](https://www.python.org/downloads/release/python-390/)
+2. [GLPK](https://www.gnu.org/software/glpk/)
+
+**Download the code:**
 ```bash
 git clone https://github.com/roman1e2f5p8s/kp_committee
 ```
-Create a virtual environment:
+
+**Create a virtual environment ```venv```:**
 ```bash
-virtualenv .venv --python=3.9
+python3.9 -m venv venv
 ```
-Activate the virtual environment:
+
+**Activate the virtual environment:**
+- On Unix or MacOS:
 ```bash
-source .venv/bin/activate
+source venv/bin/activate
 ```
-Install the dependencies:
+- On Windows:
+```bash
+venv\Scripts\activate.bat
+```
+
+**Install the dependencies:**
 ```bash
 pip3.9 install -r requirements.txt
 ```
+
+[//]: # (
 Then run
 ```bash
 python3.9 setup.py install
 ```
+)
 
 
 ```python
