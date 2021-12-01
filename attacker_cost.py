@@ -1,4 +1,6 @@
+import os
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
 from src.parsers import attacker_cost_parser
@@ -29,6 +31,32 @@ def main():
                 verbose=args.verbose)
 
         attacker_costs[i] = attacker_cost
+    
+    if args.csv:
+        data = {'s': zipf_coeffs, 'cost': attacker_costs}
+        df = pd.DataFrame(data)
+
+        fname = '{}_cost.csv'.format(args.mode)
+        if os.path.isfile(fname):
+            print('File {} exists: o - overwrite, n - enter new file name, c - cancel saving data'.\
+                    format(fname))
+
+            i = input('Enter your choice: ')
+            if i == 'o':
+                df.to_csv(fname, index=False)
+                print('Data saved in {}'.format(fname))
+            elif i == 'n':
+                fname = input('Type new file name: ')
+                while not fname or fname == 'costs.csv':
+                    fname = input('Type new file name: ')
+
+                df.to_csv(fname, index=False)
+                print('Data saved in {}'.format(fname))
+            else:
+                print('Data has not been be saved')
+        else:
+            df.to_csv(fname, index=False)
+            print('Data saved in {}'.format(fname))
 
     if args.latex:
         plt.rcParams['font.size'] = 11

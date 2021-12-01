@@ -256,6 +256,12 @@ def attacker_cost_parser():
             default=False,
             help='verbose outputs, defaults to False'
             )
+    optional_args.add_argument(
+            '--csv',
+            action='store_true',
+            default=False,
+            help='save data to CSV file, defaults to False'
+            )
 
     return parser
 
@@ -355,6 +361,12 @@ def costs_parser():
             action='store_true',
             default=False,
             help='verbose outputs, defaults to False'
+            )
+    optional_args.add_argument(
+            '--csv',
+            action='store_true',
+            default=False,
+            help='save data to CSV file, defaults to False'
             )
 
     return parser
