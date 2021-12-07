@@ -33,13 +33,12 @@ voting power.
 2. In order to **overtake** the committee, the attacker needs to obtain more than 2/3 of the total 
 voting power.
 
-Define $\alpha \in \{1/3, 2/3\}$.
-We now formulate the following optimization problem
-\begin{equation}
-    \text{Minimize} \sum_{i=1}^{N}C_iu_i\\
-    \text{subject to} \sum_{i=1}^{N}W_iu_i \geq \alpha\sum_{i=1}^{N}W_i,\\
-    u_i \in \{0, 1\}. 
-\end{equation}
+Define ![alt text](latex_eqs/alphain.svg). We now formulate the following optimization problem:
+<p align="center">
+<img src="latex_eqs/OF.svg" />
+<img src="latex_eqs/constr.svg" />
+<img src="latex_eqs/uiin.svg" />
+</p>
 
 In the relevant literature, this problem is known as a **minimization knapsack problem**.
 
