@@ -5,18 +5,13 @@
 There is a committee with ![alt text](latex_eqs/N.svg) seats. 
 An attacker wants to select certain seats at a minimum cost in order to stop/overtake the committee.
 
-Let ![equation](https://latex.codecogs.com/svg.latex?C_i) denote the cost of selecting seat 
-![equation](https://latex.codecogs.com/svg.latex?i), 
-and ![equation](https://latex.codecogs.com/svg.latex?W_i) denote the weight (voting power) of seat 
-![equation](https://latex.codecogs.com/svg.latex?i,\&space;i&space;\in&space;\{1,2,...,N\}). 
-Define ![equation](https://latex.codecogs.com/svg.latex?u_i) to be a binary variable 
-(i.e. ![alt text](latex_eqs/uiin.svg) representing 
-whether seat ![equation](https://latex.codecogs.com/svg.latex?i) is going to be selected or not. 
-That is, ![equation](https://latex.codecogs.com/svg.latex?u_i) are our decision variables: if 
-![equation](https://latex.codecogs.com/svg.latex?u_i=0), seat 
-![equation](https://latex.codecogs.com/svg.latex?i) shall not be selected, and if 
-![equation](https://latex.codecogs.com/svg.latex?u_i=1), seat 
-![equation](https://latex.codecogs.com/svg.latex?i) shall be selected.
+Let ![alt text](latex_eqs/Ci.svg) denote the cost of selecting seat ![alt text](latex_eqs/i.svg), 
+and ![alt text](latex_eqs/Wi.svg) denote the weight (voting power) of seat ![alt text](latex_eqs/i.svg). 
+Define ![alt text](latex_eqs/ui.svg) to be a binary variable (i.e. ![alt text](latex_eqs/uiin.svg) 
+representing whether seat ![alt text](latex_eqs/i.svg) is going to be selected or not. That is, 
+![alt text](latex_eqs/ui.svg) are our decision variables: if ![alt text](latex_eqs/ui0.svg), seat 
+![alt text](latex_eqs/i.svg) shall not be selected, and if ![alt text](latex_eqs/ui1.svg), seat 
+![alt text](latex_eqs/i.svg) shall be selected.
 
 The total voting power of the committee with $N$ seats is:
 \begin{equation}
