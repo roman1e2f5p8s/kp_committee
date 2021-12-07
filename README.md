@@ -54,7 +54,7 @@ In the relevant literature, this problem is known as a **minimization knapsack p
 
 ## Implementation
 
-The coding language of this project is ```Python 3.9```. [Pyomo](http://www.pyomo.org/) 
+The coding language of this project is ````Python 3.9````. [Pyomo](http://www.pyomo.org/) 
 and [GLPK](https://www.gnu.org/software/glpk/) are used to solve the optimzation problem.
 
 ## Getting Started
