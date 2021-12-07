@@ -45,6 +45,7 @@ Define ![alt text](latex_eqs/alphain.svg). We now formulate the following optimi
 <p align="center">
 <img src="latex_eqs/uiincoma.svg" />
 </p>
+
 where ![alt text](latex_eqs/eps0.svg) if ![alt text](latex_eqs/alpha13.svg) and 
 ![alt text](latex_eqs/eps.svg) is a sufficient small positive number if 
 ![alt text](latex_eqs/alpha23.svg).
