@@ -15,7 +15,7 @@ representing whether seat ![alt text](latex_eqs/i.svg) is going to be selected o
 
 The total voting power of the committee with ![alt text](latex_eqs/N.svg) seats is:
 <p align="center">
-<img src="latex_eqs/sumWi.svg" />
+<img src="latex_eqs/sumWi.svg" />.
 </p>
 
 The obtained voting power by adversary is defined as follows:
