@@ -140,6 +140,7 @@ The example below was generated using the following command:
 ```bash
 python3.9 main.py --n_nodes=10 --n_seats=10 --mode=stop --data=random --latex
 ```
+
 <div>
 <img src="examples/stop.pdf" alt="Restaurant example MDP" />
 </div>
