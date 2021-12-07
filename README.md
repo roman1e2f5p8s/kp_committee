@@ -5,7 +5,18 @@
 There is a committee with ![equation](https://latex.codecogs.com/svg.latex?N) seats. 
 An attacker wants to select certain seats at a minimum cost in order to stop/overtake the committee.
 
-Let $C_i$ denote the cost of selecting seat $i$, and $W_i$ denote the weight (voting power) of seat $i, i \in \{1,2,...,N\}$. Define $u_i$ to be a binary variable (i.e. $u_i \in \{0, 1\}$) representing whether seat $i$ is going to be selected or not. That is, $u_i$ are our decision variables: if $u_i=0$, seat $i$ shall not be selected, and if $u_i=1$, seat $i$ shall be selected.
+Let ![equation](https://latex.codecogs.com/svg.latex?C_i) denote the cost of selecting seat 
+![equation](https://latex.codecogs.com/svg.latex?i), 
+and ![equation](https://latex.codecogs.com/svg.latex?W_i) denote the weight (voting power) of seat 
+![equation](https://latex.codecogs.com/svg.latex?i,\&space;i&space;\in&space;\{1,2,...,N\}). 
+Define ![equation](https://latex.codecogs.com/svg.latex?u_i) to be a binary variable (i.e. 
+![equation](https://latex.codecogs.com/svg.latex?u_i&space;\in&space;\{0,&space;1\}) representing 
+whether seat ![equation](https://latex.codecogs.com/svg.latex?i) is going to be selected or not. 
+That is, ![equation](https://latex.codecogs.com/svg.latex?u_i) are our decision variables: if 
+![equation](https://latex.codecogs.com/svg.latex?u_i=0), seat 
+![equation](https://latex.codecogs.com/svg.latex?i) shall not be selected, and if 
+![equation](https://latex.codecogs.com/svg.latex?u_i=1), seat 
+![equation](https://latex.codecogs.com/svg.latex?i) shall be selected.
 
 The total voting power of the committee with $N$ seats is:
 \begin{equation}
