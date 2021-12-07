@@ -36,8 +36,14 @@ voting power.
 Define ![alt text](latex_eqs/alphain.svg). We now formulate the following optimization problem:
 <p align="center">
 <img src="latex_eqs/OF.svg" />
+</p>
+
+<p align="center">
 <img src="latex_eqs/constr.svg" />
-<img src="latex_eqs/uiin.svg" />
+</p>
+
+<p align="center">
+<img src="latex_eqs/uiindot.svg" />
 </p>
 
 In the relevant literature, this problem is known as a **minimization knapsack problem**.
