@@ -142,10 +142,22 @@ python3.9 main.py --n_nodes=10 --n_seats=10 --mode=stop --data=random --latex
 ```
 
 <div>
-<img src="examples/stop.png" alt="Restaurant example MDP" />
+<img src="examples/stop.png" alt="Seats selection to stop the committee" />
 </div>
-<b>Figure 1: Restaurant example MDP rendered into Jupyter notebook</b>
+<b>Figure 1: Seats selection to stop the committee: an attacker would need to select seats 3 and 9
+in order to stop the committee (with obtained voting power of 25) at the minimum possible cost of 0.8.
+</b>
 
-<p align="center">
-<img src="examples/stop.png" />
-</p>
+To simulate committee overtaking, we simply change the ````mode````:
+
+```bash
+python3.9 main.py --n_nodes=10 --n_seats=10 --mode=overtake --data=random --latex
+```
+
+<div>
+<img src="examples/overtake.png" alt="Seats selection to overtake the committee" />
+</div>
+<b>Figure 2: Seats selection to overtake the committee: an attacker would need to select seats 3, 5, 7 
+and 9 in order to overtake the committee (with obtained voting power of 46) at the minimum possible 
+cost of 1.98.
+</b>
