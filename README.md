@@ -10,7 +10,8 @@ Let ![equation](https://latex.codecogs.com/svg.latex?C_i) denote the cost of sel
 and ![equation](https://latex.codecogs.com/svg.latex?W_i) denote the weight (voting power) of seat 
 ![equation](https://latex.codecogs.com/svg.latex?i,\&space;i&space;\in&space;\{1,2,...,N\}). 
 Define ![equation](https://latex.codecogs.com/svg.latex?u_i) to be a binary variable (i.e. 
-![equation](https://latex.codecogs.com/svg.latex?u_i&space;\in&space;\{0,&space;1\}) representing 
+<!--![equation](https://latex.codecogs.com/svg.latex?u_i&space;\in&space;\{0,&space;1\}) representing -->
+![alt text](https://latex.codecogs.com/svg.latex?u_i&space;\in&space;\{0,&space;1\}) representing 
 whether seat ![equation](https://latex.codecogs.com/svg.latex?i) is going to be selected or not. 
 That is, ![equation](https://latex.codecogs.com/svg.latex?u_i) are our decision variables: if 
 ![equation](https://latex.codecogs.com/svg.latex?u_i=0), seat 
