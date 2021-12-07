@@ -142,10 +142,10 @@ python3.9 main.py --n_nodes=10 --n_seats=10 --mode=stop --data=random --latex
 ```
 
 <div>
-<img src="examples/stop.svg" alt="Restaurant example MDP" />
+<img src="examples/stop.png" alt="Restaurant example MDP" />
 </div>
 <b>Figure 1: Restaurant example MDP rendered into Jupyter notebook</b>
 
 <p align="center">
-<img src="examples/stop.svg" />
+<img src="examples/stop.png" />
 </p>
