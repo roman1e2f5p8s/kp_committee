@@ -2,7 +2,7 @@
 
 ## Problem formulation
 
-There is a committee with ![equation](https://latex.codecogs.com/svg.latex?N) seats. 
+There is a committee with ![alt text](latex_eqs/N.svg) seats. 
 An attacker wants to select certain seats at a minimum cost in order to stop/overtake the committee.
 
 Let ![equation](https://latex.codecogs.com/svg.latex?C_i) denote the cost of selecting seat 
@@ -10,7 +10,7 @@ Let ![equation](https://latex.codecogs.com/svg.latex?C_i) denote the cost of sel
 and ![equation](https://latex.codecogs.com/svg.latex?W_i) denote the weight (voting power) of seat 
 ![equation](https://latex.codecogs.com/svg.latex?i,\&space;i&space;\in&space;\{1,2,...,N\}). 
 Define ![equation](https://latex.codecogs.com/svg.latex?u_i) to be a binary variable 
-(i.e. ![alt text](uiin.svg) representing 
+(i.e. ![alt text](latex_eqs/uiin.svg) representing 
 whether seat ![equation](https://latex.codecogs.com/svg.latex?i) is going to be selected or not. 
 That is, ![equation](https://latex.codecogs.com/svg.latex?u_i) are our decision variables: if 
 ![equation](https://latex.codecogs.com/svg.latex?u_i=0), seat 
