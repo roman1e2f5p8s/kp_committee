@@ -1,4 +1,4 @@
-# Knapsack problem and committee selection
+# Multiple seats selection in the committee (minimization knapsack problem)
 
 ## Problem formulation
 
