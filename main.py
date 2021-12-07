@@ -15,11 +15,13 @@ def main():
     N_SEATS = args.n_seats
     ALPHA = 1.0 / 3 if args.mode == 'stop' else 2.0 / 3
     NODE_SIZE = 2000
-
-    # COSTS = np.random.uniform(low=0, high=1, size=N_SEATS)
-    # WEIGHTS = np.random.randint(low=1, high=args.max_weight + 1, size=N_SEATS)
-    COSTS = dg.get_costs(n_nodes=args.n_nodes, zipf_coeffs=args.zipfc)[:N_SEATS]
-    WEIGHTS = dg.get_voting_power(n_nodes=args.n_nodes)[:N_SEATS]
+    
+    if args.data == 'random':
+        COSTS = np.random.uniform(low=0, high=1, size=N_SEATS)
+        WEIGHTS = np.random.randint(low=1, high=args.max_weight + 1, size=N_SEATS)
+    else:
+        COSTS = dg.get_costs(n_nodes=args.n_nodes, zipf_coeffs=args.zipfc)[:N_SEATS]
+        WEIGHTS = dg.get_voting_power(n_nodes=args.n_nodes)[:N_SEATS]
     
     if not args.novis:
         H, W, nodes_pos = gu.layout(n_seats=N_SEATS, node_size=NODE_SIZE)

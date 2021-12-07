@@ -48,7 +48,7 @@ def main_parser():
 
     formatter = lambda prog: argparse.RawTextHelpFormatter(prog, max_help_position=50)
     parser = argparse.ArgumentParser(
-            description='Solves Knapsack problem for committee selection',
+            description='Multiple seats in the committee: solve minimization knapsack problem',
             add_help=False,
             formatter_class=formatter,
             )
@@ -70,14 +70,6 @@ def main_parser():
             required=True,
             metavar='{4,5,...}',
             help='number of seats in the committee',
-            )
-    required_args.add_argument(
-            '--zipfc',
-            action=PositiveNumberAction,
-            type=float,
-            required=True,
-            metavar='> 0',
-            help='zipf coefficient',
             )
     required_args.add_argument(
             '--mode',
@@ -105,13 +97,31 @@ def main_parser():
             help='seed for random generator, defaults to 2021',
             )
     optional_args.add_argument(
+            '--data',
+            type=str,
+            required=False,
+            default='zipf',
+            choices=['zipf', 'random'],
+            help='if zipf, generate costs and weights according to Zipf law; ' +
+                'if random, generate random data for costs and weights, defaults to zipf',
+            )
+    optional_args.add_argument(
+            '--zipfc',
+            action=PositiveNumberAction,
+            type=float,
+            required=False,
+            metavar='> 0',
+            default=1,
+            help='zipf coefficient (if data needs to be generated using Zipf law), defaults to 1',
+            )
+    optional_args.add_argument(
             '--max_weight',
             type=int,
             action=MaxWeightAction,
             required=False,
             default=20,
             metavar='{1,2,...,20}',
-            help='maximum value of voting power, defaults to 20',
+            help='maximum value of voting power (if random data needs to be generated), defaults to 20',
             )
     optional_args.add_argument(
             '--solver',
@@ -136,7 +146,7 @@ def main_parser():
             '--novis',
             action='store_true',
             default=False,
-            help='do visualize the results, defaults to False'
+            help='do not visualize the results, defaults to False'
             )
     optional_args.add_argument(
             '--verbose',

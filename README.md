@@ -54,7 +54,8 @@ In the relevant literature, this problem is known as a **minimization knapsack p
 
 ## Implementation
 
-The coding language of this project is ```Python 3.9```. [Pyomo](http://www.pyomo.org/) and [GLPK](https://www.gnu.org/software/glpk/) are used to solve the optimzation problem.
+The coding language of this project is ```Python 3.9```. [Pyomo](http://www.pyomo.org/) 
+and [GLPK](https://www.gnu.org/software/glpk/) are used to solve the optimzation problem.
 
 ## Getting Started
 Please follow these instructions to install all the requirements and use the package correctly.
@@ -91,18 +92,25 @@ pip3.9 install -r requirements.txt
 
 ### Usage
 
+A simple example can be generated using the following command with required arguments:
+
+```bash
+python3.9 main.py --n_nodes=N_NODES --n_seats=N_SEATS --mode=MODE
+```
+
 See help files for more details:
 
 ```bash
-python main.py --help
+python3.9 main.py --help
 ```
 
 ```
 usage: main.py --n_nodes {4,5,...} --n_seats {4,5,...} --mode {stop,overtake} [-h]
-               [--seed {1,2,...}] [--max_weight {1,2,...,20}] [--solver SOLVER] [--latex]
-               [--hide_plots]
+               [--seed {1,2,...}] [--data {zipf,random}] [--zipfc > 0]
+               [--max_weight {1,2,...,20}] [--solver SOLVER] [--latex] [--hide_plots]
+               [--novis] [--verbose]
 
-Solves Knapsack problem for committee selection
+Multiple seats in the committee: solve minimization knapsack problem
 
 required arguments:
   --n_nodes {4,5,...}        number of nodes in the network
@@ -112,13 +120,27 @@ required arguments:
 optional arguments:
   -h, --help                 show this help message and exit
   --seed {1,2,...}           seed for random generator, defaults to 2021
-  --max_weight {1,2,...,20}  maximum value of voting power, defaults to 20
+  --data {zipf,random}       if zipf, generate costs and weights according to Zipf law; 
+                             if random, generate random data for costs and weights, defaults to zipf
+  --zipfc > 0                zipf coefficient (if data needs to be generated using Zipf law), 
+                             defaults to 1
+  --max_weight {1,2,...,20}  maximum value of voting power (if random data needs to be generated), 
+                             defaults to 20
   --solver SOLVER            solver name, defaults to glpk
   --latex                    use LaTeX in plots, defaults to False
   --hide_plots               do not show plots, defaults to False
+  --novis                    do not visualize the results, defaults to False
+  --verbose                  verbose outputs, defaults to False
 ```
 
+### Examples
 
-```python
+The example below was generated using the following command:
 
+```bash
+python3.9 main.py --n_nodes=10 --n_seats=10 --mode=stop --data=random --latex
 ```
+
+<p align="center">
+<img src="examples/stop.pdf" />
+</p>

@@ -85,7 +85,7 @@ def plot(n_seats, mode, costs, weights, nodes_pos, node_size, fig_w, fig_h,
             advC_label = 'advC={:.2f}'.format(adversary_cost)
 
     if solved:
-        plt.plot(-np.inf, -np.inf, linestyle='', marker='o', color='green', label='Selected by adversary')
+        plt.plot(-np.inf, -np.inf, linestyle='', marker='o', color='green', label='Selected by attacker')
     plt.plot(-1, -1, linestyle='', color='white', label=c_label)
     plt.plot(-1, -1, linestyle='', color='white', label=v_label)
     if solved:
