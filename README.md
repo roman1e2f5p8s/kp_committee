@@ -140,8 +140,10 @@ The example below was generated using the following command:
 ```bash
 python3.9 main.py --n_nodes=10 --n_seats=10 --mode=stop --data=random --latex
 ```
-
-![alt text](examples/stop.pdf)
+<div>
+<img src="examples/stop.pdf" alt="Restaurant example MDP" />
+</div>
+<b>Figure 1: Restaurant example MDP rendered into Jupyter notebook</b>
 
 <p align="center">
 <img src="examples/stop.pdf" />
