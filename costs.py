@@ -40,7 +40,7 @@ def main():
                 df.to_csv(fname, index=False)
                 print('Data saved in {}'.format(fname))
             else:
-                print('Data has not been be saved')
+                print('Data has not been saved')
         else:
             df.to_csv(fname, index=False)
             print('Data saved in {}'.format(fname))

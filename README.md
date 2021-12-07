@@ -164,3 +164,47 @@ python3.9 main.py --n_nodes=10 --n_seats=10 --mode=overtake --data=random --late
 and 9 (green circles) in order to overtake the committee (with obtained voting power of 46) 
 at the minimum possible cost of 1.98.
 </b>
+
+### Other tools
+
+It is interesting to investigate how cost of nodes varies for different values of Zipf coefficients. 
+Script ````costs.py```` aims to do such a job:
+
+```bash
+python3.9 costs.py --help
+```
+
+```
+usage: costs.py --n_nodes {4,5,...} [-h] [--zipfc_min > 0] [--zipfc_max > 0]
+                [--zipfc_step > 0] [--latex] [--hide_plots] [--novis] [--verbose] [--csv]
+
+Computes nodes costs for different values of zipf coefficients
+
+required arguments:
+  --n_nodes {4,5,...}  number of nodes in the network
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --zipfc_min > 0      minimum value of zipf coefficient, default to 0.5
+  --zipfc_max > 0      maximum value of zipf coefficient, default to 1.5
+  --zipfc_step > 0     step to generate range of zipf coefficients, default to 0.1
+  --latex              use LaTeX in plots, defaults to False
+  --hide_plots         do not show plots, defaults to False
+  --novis              do visualize the results, defaults to False
+  --verbose            verbose outputs, defaults to False
+  --csv                save data to CSV file, defaults to False
+```
+
+For example, this command
+
+```bash
+python3.9 costs.py --n_nodes=1000 --latex --zipfc_min=0.5 --zipfc_max=1.5 --zipfc_step=0.1
+```
+
+produces the following graph:
+
+<div>
+<img src="examples/costs.png" alt="Costs as a function of Zipf coefficients" />
+</div>
+<b>Figure 3: Cost of selecting nodes as a function of Zipf law parameter on log-log scale.
+</b>
