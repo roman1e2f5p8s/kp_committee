@@ -141,6 +141,10 @@ The example below was generated using the following command:
 python3.9 main.py --n_nodes=10 --n_seats=10 --mode=stop --data=random --latex
 ```
 
+<p align="center">
+<img src="latex_eqs/uiincoma.svg" />
+</p>
+
 <div>
 <img src="examples/stop.pdf" alt="Restaurant example MDP" />
 </div>
