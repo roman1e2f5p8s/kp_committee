@@ -15,21 +15,23 @@ representing whether seat ![alt text](latex_eqs/i.svg) is going to be selected o
 
 The total voting power of the committee with ![alt text](latex_eqs/N.svg) seats is:
 <p align="center">
-<img src="latex_eqs/sumWi.svg" />.
+<img src="latex_eqs/sumWi.svg" />
 </p>
 
-The obtained voting power by adversary is defined as follows:
-\begin{equation}
-    \sum_{i=1}^{N}W_iu_i,
-\end{equation}
+The obtained voting power by the attacker is defined as follows:
+<p align="center">
+<img src="latex_eqs/sumWiui.svg" />
+</p>
 and the cost of this is
-\begin{equation}
-    \sum_{i=1}^{N}C_iu_i,
-\end{equation}
+<p align="center">
+<img src="latex_eqs/sumCiui.svg" />
+</p>
 
 We are interested in two scenarios:
-1. In order to **stop** the committee, the adversary needs to obtain 1/3 or more of the total voting power.
-2. In order to **overtake** the committee, the adversary needs to obtain more than 2/3 of the total voting power.
+1. In order to **stop** the committee, the attacker needs to obtain 1/3 or more of the total 
+voting power.
+2. In order to **overtake** the committee, the attacker needs to obtain more than 2/3 of the total 
+voting power.
 
 Define $\alpha \in \{1/3, 2/3\}$.
 We now formulate the following optimization problem
