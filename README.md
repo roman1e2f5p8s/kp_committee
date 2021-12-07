@@ -208,3 +208,62 @@ produces the following graph:
 </div>
 <b>Figure 3: Cost of selecting nodes as a function of Zipf law parameter on log-log scale.
 </b>
+
+Script ````attacker_cost.py```` calculates the minimum attacker cost to stop/overtake the committee 
+for different values of Zipf coefficients:
+
+```bash
+python3.9 costs.py --help
+```
+
+```
+usage: attacker_cost.py --n_nodes {4,5,...} --n_seats {4,5,...} --mode {stop,overtake} [-h]
+                        [--zipfc_min > 0] [--zipfc_max > 0] [--zipfc_step > 0]
+                        [--solver SOLVER] [--latex] [--hide_plots] [--novis] [--verbose]
+                        [--csv]
+
+Computes attacker cost for different values of zipf coefficients
+
+required arguments:
+  --n_nodes {4,5,...}     number of nodes in the network
+  --n_seats {4,5,...}     number of seats in the committee
+  --mode {stop,overtake}  mode to simulate: either stop or overtake the committee
+
+optional arguments:
+  -h, --help              show this help message and exit
+  --zipfc_min > 0         minimum value of zipf coefficient, default to 0.5
+  --zipfc_max > 0         maximum value of zipf coefficient, default to 1.5
+  --zipfc_step > 0        step to generate range of zipf coefficients, default to 0.01
+  --solver SOLVER         solver name, defaults to glpk
+  --latex                 use LaTeX in plots, defaults to False
+  --hide_plots            do not show plots, defaults to False
+  --novis                 do visualize the results, defaults to False
+  --verbose               verbose outputs, defaults to False
+  --csv                   save data to CSV file, defaults to False
+```
+
+```bash
+python3.9 attacker_cost.py --n_nodes=1000 --n_seats=30 --mode=stop --latex
+```
+
+produces the following plot:
+
+<div>
+<img src="examples/stop_cost.png" alt="Stop cost as a function of Zipf coefficients" />
+</div>
+<b>Figure 3: Minimum attacker cost to stop the committee as a function of Zipf law parameter.
+</b>
+
+Finally,
+
+```bash
+python3.9 attacker_cost.py --n_nodes=1000 --n_seats=30 --mode=overtake --latex
+```
+
+should generate the following graph:
+
+<div>
+<img src="examples/overtake_cost.png" alt="Overtake cost as a function of Zipf coefficients" />
+</div>
+<b>Figure 3: Minimum attacker cost to overtake the committee as a function of Zipf law parameter.
+</b>
