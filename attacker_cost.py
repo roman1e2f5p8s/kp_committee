@@ -12,7 +12,8 @@ def main():
     args = attacker_cost_parser().parse_args()
 
     ALPHA = 1.0 / 3 if args.mode == 'stop' else 2.0 / 3
-    WEIGHTS = dg.get_voting_power(n_nodes=args.n_nodes)[:args.n_seats]
+    k = 5
+    WEIGHTS = dg.get_voting_power(n_nodes=args.n_seats, k=k)#[:args.n_seats]
 
     zipf_coeffs = np.arange(start=args.zipfc_min, stop=args.zipfc_max + args.zipfc_step,
             step=args.zipfc_step)
