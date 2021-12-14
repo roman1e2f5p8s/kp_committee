@@ -169,7 +169,7 @@ def attacker_cost_parser():
 
     formatter = lambda prog: argparse.RawTextHelpFormatter(prog, max_help_position=50)
     parser = argparse.ArgumentParser(
-            description='Computes attacker cost for different values of zipf coefficients',
+            description='Computes attacker cost for different values of Zipf coefficients',
             add_help=False,
             formatter_class=formatter,
             )
@@ -276,6 +276,132 @@ def attacker_cost_parser():
     return parser
 
 
+def attacker_cost_k_parser():
+    '''
+    Creates help file and parses command line arguments for the main script, i.e. run.py
+    Parameters:
+        - no input parameters
+    Returns:
+        - args, class 'argparse.Namespace'
+    '''
+
+    formatter = lambda prog: argparse.RawTextHelpFormatter(prog, max_help_position=50)
+    parser = argparse.ArgumentParser(
+            description='Computes attacker cost for different values of Zipf coefficients and k in '
+                'k-scheme',
+            add_help=False,
+            formatter_class=formatter,
+            )
+
+    # required arguments
+    required_args = parser.add_argument_group('required arguments')
+    required_args.add_argument(
+            '--n_nodes',
+            action=NumSeatsAction,
+            type=int,
+            required=True,
+            metavar='{4,5,...}',
+            help='number of nodes in the network',
+            )
+    required_args.add_argument(
+            '--n_seats',
+            action=NumSeatsAction,
+            type=int,
+            required=True,
+            metavar='{4,5,...}',
+            help='number of seats in the committee',
+            )
+    required_args.add_argument(
+            '--mode',
+            type=str,
+            choices=['stop', 'overtake'],
+            required=True,
+            help='mode to simulate: either stop or overtake the committee',
+            )
+
+    # optimal arguments
+    optional_args = parser.add_argument_group('optional arguments')
+    optional_args.add_argument(
+            '-h',
+            '--help',
+            action='help',
+            help='show this help message and exit',
+            )
+    optional_args.add_argument(
+            '--zipfc_min',
+            action=PositiveNumberAction,
+            type=float,
+            required=False,
+            metavar='> 0',
+            default=0.5,
+            help='minimum value of zipf coefficient, default to 0.5',
+            )
+    optional_args.add_argument(
+            '--zipfc_max',
+            action=PositiveNumberAction,
+            type=float,
+            required=False,
+            metavar='> 0',
+            default=1.5,
+            help='maximum value of zipf coefficient, default to 1.5',
+            )
+    optional_args.add_argument(
+            '--zipfc_step',
+            action=PositiveNumberAction,
+            type=float,
+            required=False,
+            metavar='> 0',
+            default=0.01,
+            help='step to generate range of zipf coefficients, default to 0.01',
+            )
+    optional_args.add_argument(
+            '--k_max',
+            action=NatNumbAction,
+            type=int,
+            required=False,
+            metavar='> 0',
+            default=5,
+            help='maximum value of k, default to 5',
+            )
+    optional_args.add_argument(
+            '--solver',
+            type=str,
+            required=False,
+            default='glpk',
+            help='solver name, defaults to glpk',
+            )
+    optional_args.add_argument(
+            '--latex',
+            action='store_true',
+            default=False,
+            help='use LaTeX in plots, defaults to False'
+            )
+    optional_args.add_argument(
+            '--hide_plots',
+            action='store_true',
+            default=False,
+            help='do not show plots, defaults to False'
+            )
+    optional_args.add_argument(
+            '--novis',
+            action='store_true',
+            default=False,
+            help='do visualize the results, defaults to False'
+            )
+    optional_args.add_argument(
+            '--verbose',
+            action='store_true',
+            default=False,
+            help='verbose outputs, defaults to False'
+            )
+    optional_args.add_argument(
+            '--csv',
+            action='store_true',
+            default=False,
+            help='save data to CSV file, defaults to False'
+            )
+
+    return parser
 def costs_parser():
     '''
     Creates help file and parses command line arguments for the main script, i.e. run.py

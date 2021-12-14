@@ -34,7 +34,7 @@ def _get_voting_power(n_nodes, k):
             idx = [i for i in range(low_i, up_i+1)]
         vp[idx] = kk
     
-    vp = -np.sort(-vp)
+    # vp = -np.sort(-vp)
     assert (vp > 0).all()
     return vp
 
@@ -63,6 +63,5 @@ def get_voting_power(n_seats, k):
             idx = [i for i in range(low_i-1, up_i)]
         vp[idx] = kk
     
-    print(vp)
     assert (vp > 0).all()
     return vp
